@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import cn from 'clsx'
 import s from './Layout.module.css'
 import dynamic from 'next/dynamic'
@@ -39,7 +40,7 @@ interface Props {
   pageProps: {}
 }
 
-const LayoutBlank: React.FC<Props> = ({ children }) => {
+const LayoutBlank: FC<Props> = ({ children }) => {
   const { locale = 'en-US' } = useRouter()
 
   return (

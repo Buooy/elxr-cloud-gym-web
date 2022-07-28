@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import cn from 'clsx'
 import s from './Layout.module.css'
 import { useRouter } from 'next/router'
@@ -11,8 +12,6 @@ import PaymentMethodView from '@components/checkout/PaymentMethodView'
 import CheckoutSidebarView from '@components/checkout/CheckoutSidebarView'
 import { MenuSidebarView } from '@components/common/UserNav'
 import type { Link as LinkProps } from '../UserNav/MenuSidebarView'
-import { useEffect, useState } from 'react'
-import AuthContextProvider from 'contexts/authContext'
 
 const SidebarView: React.FC<{
   sidebarView: string
@@ -30,7 +29,7 @@ const SidebarView: React.FC<{
   )
 }
 
-const SidebarUI: React.FC<{ links: LinkProps[] }> = ({ links }) => {
+const SidebarUI: FC<{ links: LinkProps[] }> = ({ links }) => {
   const { displaySidebar, closeSidebar, sidebarView } = useUI()
   return displaySidebar ? (
     <SidebarView
@@ -41,17 +40,15 @@ const SidebarUI: React.FC<{ links: LinkProps[] }> = ({ links }) => {
   ) : null
 }
 
-const LayoutDashboard: React.FC = ({ children }) => {
+const LayoutDashboard: FC = ({ children }) => {
   const { locale = 'en-US' } = useRouter()
 
   return (
     <CommerceProvider locale={locale}>
-      <AuthContextProvider>
-        <div className={cn(s.root)}>
-          <DashboardNavbar />
-          <main className="fit">{children}</main>
-        </div>
-      </AuthContextProvider>
+      <div className={cn(s.root)}>
+        <DashboardNavbar />
+        <main className="fit">{children}</main>
+      </div>
     </CommerceProvider>
   )
 }
