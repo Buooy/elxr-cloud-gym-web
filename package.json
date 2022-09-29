@@ -23,8 +23,5 @@
       "pre-commit": "turbo run lint"
     }
   },
-  "packageManager": "yarn@1.22.17",
-  "dependencies": {
-    "usehooks-ts": "^2.6.0"
-  }
+  "packageManager": "yarn@1.22.17"
 }

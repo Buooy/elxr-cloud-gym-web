@@ -4,8 +4,12 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   safelist: ['outline-none'],
+  plugins: [require('daisyui')],
   theme: {
     extend: {
+      fontFamily: {
+        heading: ['Cairo'],
+      },
       maxWidth: {
         '8xl': '1920px',
       },

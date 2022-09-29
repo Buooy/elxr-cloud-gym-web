@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router'
 import { FC, useEffect } from 'react'
 import useCustomer from '@framework/customer/use-customer'
+import UnauthorisedView from './Unauthorised'
 
-const LoggedInOnlyRoute: FC<{ requiredTags: string[] }> = ({
+const LoggedInOnlyRoute: FC<{ requiredTags?: string[] }> = ({
   children,
   requiredTags = [],
 }) => {
@@ -21,12 +22,16 @@ const LoggedInOnlyRoute: FC<{ requiredTags: string[] }> = ({
   }
 
   useEffect(() => {
-    if (!isLoading && (!isUserLoggedIn() || !hasRequiredUserTags())) {
-      router.push('/login')
+    if (!isLoading) {
+      if (!isUserLoggedIn()) router.push('/login')
     }
   }, [customer, isLoading])
 
-  return <>{children}</>
+  return (
+    <>
+      {!isLoading && (hasRequiredUserTags() ? children : <UnauthorisedView />)}
+    </>
+  )
 }
 
 export default LoggedInOnlyRoute
