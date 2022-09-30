@@ -1,5 +1,3 @@
-import commerce from '@lib/api/commerce'
-import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { LayoutBlank } from '@components/common'
 import { LoginView } from '@components/auth'
 import { useEffect, useState } from 'react'

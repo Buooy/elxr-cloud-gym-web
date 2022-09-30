@@ -4,7 +4,6 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   safelist: ['outline-none'],
-  plugins: [require('daisyui')],
   theme: {
     extend: {
       fontFamily: {
