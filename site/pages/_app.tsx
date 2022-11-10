@@ -1,29 +1,25 @@
-import '@assets/main.css'
-import '@assets/chrome-bug.css'
-import 'keen-slider/keen-slider.min.css'
-
-import { FC, useEffect } from 'react'
+/* eslint-disable react/jsx-props-no-spreading */
+import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
-import { Head } from '@components/common'
-import { ManagedUIContext } from '@components/ui/context'
+import Head from 'next/head'
 
-const Noop: FC = ({ children }) => <>{children}</>
+import defaultSEOConfig from '../next-seo.config'
+import { Chakra } from '@components/Chakra'
+import 'lib/styles/globals.css'
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  const Layout = (Component as any).Layout || Noop
-
-  useEffect(() => {
-    document.body.classList?.remove('loading')
-  }, [])
-
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
-      <Head />
-      <ManagedUIContext>
-        <Layout pageProps={pageProps}>
-          <Component {...pageProps} />
-        </Layout>
-      </ManagedUIContext>
-    </>
+    <Chakra>
+      <Head>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+        />
+      </Head>
+      <DefaultSeo {...defaultSEOConfig} />
+      <Component {...pageProps} />
+    </Chakra>
   )
 }
+
+export default MyApp

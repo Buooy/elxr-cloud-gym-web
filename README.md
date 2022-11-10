@@ -104,6 +104,12 @@ Follow our docs for [Adding a new Commerce Provider](packages/commerce/new-provi
 
 If you succeeded building a provider, submit a PR with a valid demo and we'll review it asap.
 
+## Work in progress
+
+We're using Github Projects to keep track of issues in progress and todo's. Here is our [Board](https://github.com/vercel/commerce/projects/1)
+
+People actively working on this project: @okbel & @lfades.
+
 ## Contribute
 
 Our commitment to Open Source can be found [here](https://vercel.com/oss).
